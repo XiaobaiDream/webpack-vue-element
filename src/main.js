@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import App from './app.vue';
 
 import './style/common.scss';
 
@@ -11,9 +12,7 @@ Vue.component('my-component', {
     }
 })
 
-const app = new Vue({
+const vm = new Vue({
     el: '#app',
-    data: {
-        message: 'Hello World!'
-    }
+    render: c => c(App)
 });

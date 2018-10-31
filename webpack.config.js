@@ -1,23 +1,28 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     //项目入口文件
     entry: './src/main.js',
     output: {
         //打包出口路径
-        path: path.resolve(__dirname, './dist'),
+        // path: path.resolve(__dirname, './dist'),
         //通过devServer访问路径
-        publicPath: '/dist/',
+        // publicPath: '/dist/',
         //打包后的文件名
         filename: 'main.js'
     },
-    mode:'development',
+    // mode:'development',
     devServer: {
         hot: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin() // Enable HMR
+        new webpack.HotModuleReplacementPlugin(), // Enable HMR
+        new HtmlWebpackPlugin({
+            filename: './index.html',
+            template: 'index.html'
+        }),
     ],
     resolve: {
         alias: {
@@ -55,6 +60,12 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]?[hash]'
+                }
+            }, {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+
                 }
             }
         ]
