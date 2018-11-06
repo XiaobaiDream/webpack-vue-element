@@ -10,7 +10,10 @@ Vue.component('my-component', {
             url: require('./image/pic_1.jpg')
         }
     }
-})
+});
+
+const lodash = require('lodash');
+Vue.prototype._lodash = lodash;
 
 const vm = new Vue({
     el: '#app',
